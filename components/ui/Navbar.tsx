@@ -17,7 +17,7 @@ export const Navbar = () => {
         }}>
 
             <Image 
-                src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png'
+                src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png'
                 alt="icono de la App"
                 width={70}
                 height={70}
