@@ -1,5 +1,6 @@
 import Head from "next/head"
 import { FunctionComponent, PropsWithChildren } from "react"
+import { Navbar } from "../ui";
 
 interface Props {
     children: JSX.Element,
@@ -17,8 +18,11 @@ export const Layout: FunctionComponent<PropsWithChildren<Props>> = ({ children, 
         </Head>
 
         {/* Navbar */}
+        <Navbar />
 
-        <main>
+        <main style={{
+            padding: '0px 20px'
+        }}>
             { children }
         </main>
     </>
