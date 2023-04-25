@@ -11,7 +11,7 @@ interface Props {
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
-    console.log(pokemon);
+    // console.log(pokemon);
 
     return (
         <Layout>
