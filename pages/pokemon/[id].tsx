@@ -5,6 +5,8 @@ import { pokeApi } from '@/api';
 import { Pokemon, Ability } from '@/interfaces';
 import { Button, Card, Container, Grid, Text, Image } from '@nextui-org/react';
 import { AbilitiesPokemon } from '@/components/pokemon';
+import { useEffect } from 'react';
+import { localFavorites } from '@/utils';
 
 interface Props {
     pokemon: Pokemon
@@ -14,6 +16,10 @@ interface Props {
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
     const { abilities } = pokemon
+
+    const onToggleFavorite = () => {
+      localFavorites.toggleFavorite( pokemon.id )
+    }
     
     return (
         <Layout title={ pokemon.name }>
@@ -44,14 +50,15 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                     <Button
                       color='gradient'
                       ghost
+                      onPress={ onToggleFavorite }
                     >
                       Guardar en Favoritos
                     </Button>
                   </Card.Header>
 
                   <Card.Body>
-                    <div className='flex items-center'>
-                      <p className='text-3xl font-extrabold'>Habilidades :</p>
+                    <div className='flex items-center text-center'>
+                      <p className='text-3xl font-extrabold'>Habilidades</p>
                       {
                         abilities.map(ability => (
                           <AbilitiesPokemon 
@@ -62,7 +69,7 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                         ))
                       }
                     </div>
-                    <Text size={30} className='text-3xl font-extrabold'>Sprites</Text>
+                    <Text className='text-3xl font-extrabold text-center md:text-left mt-8'>Sprites</Text>
                     <Container direction='row' display='flex' gap={ 0 }>
                       <Image 
                         src={ pokemon.sprites.front_default }
