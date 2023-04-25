@@ -17,15 +17,13 @@ export const Navbar = () => {
             backgroundColor: theme?.colors.purple200.value
         }}>
 
-            <Image 
-                src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png'
-                alt="icono de la App"
-                width={70}
-                height={70}
-            />
-
-
             <Link href="/">
+                <Image 
+                    src='https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png'
+                    alt="icono de la App"
+                    width={70}
+                    height={70}
+                />
                 <Text color='white' h1>P</Text>
                 <Text color='white' h2>okémon</Text>
             </Link>
