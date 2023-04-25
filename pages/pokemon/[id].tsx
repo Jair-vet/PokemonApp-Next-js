@@ -2,18 +2,21 @@ import { useRouter } from 'next/router';
 import { Layout } from '../../components/layouts';
 import { GetStaticProps, NextPage, GetStaticPaths } from 'next';
 import { pokeApi } from '@/api';
-import { Pokemon } from '@/interfaces';
+import { Pokemon, Ability } from '@/interfaces';
 import { Button, Card, Container, Grid, Text, Image } from '@nextui-org/react';
+import { AbilitiesPokemon } from '@/components/pokemon';
 
 interface Props {
     pokemon: Pokemon
+    habilidad: Ability
 }
-
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
+    const { abilities } = pokemon
+    
     return (
-        <Layout>
+        <Layout title={ pokemon.name }>
             <Grid.Container css={{ marginTop: '5px' }} gap={ 2 }>
               {/* Tarjeta de Imagen del Pokémon */}
               <Grid xs={ 12 } sm={ 4 }>
@@ -34,8 +37,8 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
               {/* Tarjeta de la Información del Pokémon */}
               <Grid xs={ 12 } sm={ 8 }>
-                <Card css={{ padding: '30px', border: 'none' }}>
-                  <Card.Header css={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Card css={{ padding: '30px', border: 'none' }} >
+                  <Card.Header css={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column', '@sm':{ display: 'flex', flexDirection: 'row' }}}>
                     <Text h1 transform='capitalize'>{pokemon.name}</Text>
 
                     <Button
@@ -47,7 +50,19 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
                   </Card.Header>
 
                   <Card.Body>
-                    <Text size={30}>Sprites:</Text>
+                    <div className='flex items-center'>
+                      <p className='text-3xl font-extrabold'>Habilidades :</p>
+                      {
+                        abilities.map(ability => (
+                          <AbilitiesPokemon 
+                            key={ability.ability.url}
+                            pokemon={pokemon}
+                            habilidad={ability}
+                          />
+                        ))
+                      }
+                    </div>
+                    <Text size={30} className='text-3xl font-extrabold'>Sprites</Text>
                     <Container direction='row' display='flex' gap={ 0 }>
                       <Image 
                         src={ pokemon.sprites.front_default }
