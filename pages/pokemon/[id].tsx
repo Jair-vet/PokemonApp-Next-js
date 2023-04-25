@@ -5,7 +5,7 @@ import { pokeApi } from '@/api';
 import { Pokemon, Ability } from '@/interfaces';
 import { Button, Card, Container, Grid, Text, Image } from '@nextui-org/react';
 import { AbilitiesPokemon } from '@/components/pokemon';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { localFavorites } from '@/utils';
 
 interface Props {
@@ -15,10 +15,13 @@ interface Props {
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
+    const [isInFavorites, setIsInFavorites] = useState( localFavorites.existInFavorites( pokemon.id ) )
+
     const { abilities } = pokemon
 
     const onToggleFavorite = () => {
       localFavorites.toggleFavorite( pokemon.id )
+      setIsInFavorites( !isInFavorites )
     }
     
     return (
@@ -49,10 +52,10 @@ const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
                     <Button
                       color='gradient'
-                      ghost
+                      ghost={ !isInFavorites }
                       onPress={ onToggleFavorite }
                     >
-                      Guardar en Favoritos
+                      { isInFavorites ? 'Quitar de Favoritos' : 'Guardar en Favoritos' }
                     </Button>
                   </Card.Header>
 
