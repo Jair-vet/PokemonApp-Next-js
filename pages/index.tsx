@@ -39,8 +39,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     img: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i + 1}.svg`
   }) )
 
-
-
   return {
     props: {
       pokemons
