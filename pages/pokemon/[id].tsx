@@ -12,8 +12,6 @@ interface Props {
 
 const PokemonPage: NextPage<Props> = ({ pokemon }) => {
 
-    // console.log(pokemon);
-
     return (
         <Layout>
             <Grid.Container css={{ marginTop: '5px' }} gap={ 2 }>
