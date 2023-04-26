@@ -13,7 +13,7 @@ export const AbilitiesPokemon: NextPage<Props> = ({ habilidad }) => {
   return (
     <>
         <div>
-            <p className="ml-10 text-emerald-500 text-xl uppercase">{ ability.name }</p>
+            <p className="md:ml-10 text-emerald-500 text-xl uppercase mt-3">{ ability.name }</p>
         </div>
     </>
   )

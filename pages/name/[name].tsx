@@ -76,7 +76,7 @@ const PokemonByNamePage: NextPage<Props> = ({ pokemon }) => {
                   </Card.Header>
 
                   <Card.Body>
-                    <div className='flex items-center text-center'>
+                    <div className='md:flex md:flex-row flex-col items-center text-center'>
                       <p className='text-3xl font-extrabold'>Habilidades</p>
                       {
                         abilities.map(ability => (
